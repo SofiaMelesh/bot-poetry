@@ -1,0 +1,30 @@
+"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+use Poetry;
+
+CREATE TABLE IF NOT EXISTS district
+(district_id INT NOT NULL AUTO_INCREMENT,
+title VARCHAR(50),
+PRIMARY KEY (district_id)
+);
+
+CREATE TABLE IF NOT EXISTS street
+(street_id INT NOT NULL AUTO_INCREMENT,
+street_title VARCHAR(100),
+district_id INT,
+PRIMARY KEY (street_id),
+CONSTRAINT district_id FOREIGN KEY (district_id) REFERENCES district (district_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS poems
+(poems_id INT NOT NULL AUTO_INCREMENT,
+address VARCHAR(100),
+poem_name VARCHAR(100), 
+poem_author VARCHAR(100),
+poem_text text,
+street_id INT,
+district_id INT,
+PRIMARY KEY (poems_id),
+CONSTRAINT street_id FOREIGN KEY (street_id) REFERENCES street (street_id) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT district_fk FOREIGN KEY (district_id) REFERENCES district (district_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
