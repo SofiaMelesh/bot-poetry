@@ -4,13 +4,13 @@ import json
 import random
 import mysql.connector
 
-TOKEN = '7680395003:AAFDsDd1KzrREdG-529OUIiRw2xqz2afwx0'
-URL = f'https://api.telegram.org/bot{TOKEN}/'
+TOKEN = ''
+URL = f''
 
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Bim2005201725-",
+    password="",
     database="poetry"
 )
 
@@ -43,10 +43,10 @@ def get_updates(offset=0):
 
 
 def geocode_address(address):
-    token = 'pk.c198157a80eda06853578215b58c41d1'
+    token = ''
     headers = {"Accept-Language": "ru"}
     response = requests.get(
-        f'https://eu1.locationiq.com/v1/search.php?key={token}&q={address}&format=json',
+        f'',
         headers=headers
     ).json()
     if response and isinstance(response, list):
@@ -56,7 +56,7 @@ def geocode_address(address):
 
 
 def geocoder(latitude, longitude):
-    token = 'pk.c198157a80eda06853578215b58c41d1'
+    token = ''
     headers = {"Accept-Language": "ru"}
     address = requests.get(
         f'https://eu1.locationiq.com/v1/reverse.php?key={token}&lat={latitude}&lon={longitude}&format=json',
@@ -203,3 +203,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+
